@@ -21,7 +21,14 @@
             <li><a href="#itinerary"><i class="fas fa-calendar-alt"></i> 每日行程</a></li>
             <li><a href="#tips"><i class="fas fa-lightbulb"></i> 贴心提示</a></li>
         </ul>
+        <!-- 移动端菜单按钮 -->
+        <button class="nav-toggle" id="navToggle" aria-label="菜单">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
+
+    <!-- 移动端导航遮罩 -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- 英雄区域 -->
     <header class="hero">
@@ -1444,5 +1451,43 @@
     </footer>
 
     <script src="js/map.js"></script>
+    <script>
+    // 移动端导航菜单
+    (function() {
+        var toggle = document.getElementById('navToggle');
+        var links = document.querySelector('.nav-links');
+        var overlay = document.getElementById('navOverlay');
+
+        if (!toggle || !links) return;
+
+        function openMenu() {
+            toggle.classList.add('active');
+            links.classList.add('open');
+            if (overlay) overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            toggle.classList.remove('active');
+            links.classList.remove('open');
+            if (overlay) overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        toggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (links.classList.contains('open')) closeMenu();
+            else openMenu();
+        });
+
+        // 点击链接后关闭菜单
+        links.querySelectorAll('a').forEach(function(a) {
+            a.addEventListener('click', closeMenu);
+        });
+
+        // 点击遮罩关闭
+        if (overlay) overlay.addEventListener('click', closeMenu);
+    })();
+    </script>
 </body>
 </html>
