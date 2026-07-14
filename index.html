@@ -131,6 +131,206 @@
                 </div>
             </div>
 
+            <!-- 行程路线图 -->
+            <div class="route-map-wrapper">
+                <svg id="route-map-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="100%" height="auto">
+                    <defs>
+                        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FFF9F0"/>
+                            <stop offset="100%" style="stop-color:#F5EDE0"/>
+                        </linearGradient>
+                        <filter id="shadow">
+                            <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity=".15"/>
+                        </filter>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="blur"/>
+                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- 背景 -->
+                    <rect width="900" height="600" fill="url(#bgGrad)" rx="16"/>
+
+                    <!-- 标题区 -->
+                    <text x="40" y="48" font-size="32" font-weight="bold" fill="#4A3B6B">新疆自驾游</text>
+                    <text x="40" y="74" font-size="14" fill="#8B7BA8">2026.09.25 — 10.09 · 一家三口 · 15天 · 全程约 8500km</text>
+                    <circle cx="820" cy="50" r="26" fill="none" stroke="#D4C5A9" stroke-width="2"/>
+                    <text x="820" y="46" font-size="12" fill="#B8A88E" text-anchor="middle">行程</text>
+                    <text x="820" y="62" font-size="14" font-weight="bold" fill="#7B6896" text-anchor="middle">17站</text>
+
+                    <!-- ===== 路线连线（三段不同颜色）===== -->
+                    <!-- D1-D4 入疆红：武汉→西安→武威→哈密 -->
+                    <path d="M120,520 Q180,480 240,450 T340,380 T460,320"
+                          fill="none" stroke="#FF6B6B" stroke-width="3" stroke-dasharray="none"
+                          stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+
+                    <!-- D5-D13 北疆环线青：乌鲁木齐→布尔津→禾木→喀纳斯→魔鬼城→赛里木湖→伊宁→那拉提→独库公路→哈密 -->
+                    <path d="M460,320 Q520,280 580,220 T700,190 T750,230 T720,300 T620,350
+                             T500,380 T420,360 T380,400 T430,440 T460,320"
+                          fill="none" stroke="#11998E" stroke-width="3.5"
+                          stroke-linecap="round" stroke-linejoin="round" opacity=".8"/>
+
+                    <!-- D14-D15 返程金+终点紫：哈密→张掖→兰州→武汉 -->
+                    <path d="M460,320 Q400,370 330,430 T200,490 T120,520"
+                          fill="none" stroke="#F5AF19" stroke-width="3" stroke-linecap="round" opacity=".75"/>
+                    <!-- 终点段虚线 -->
+                    <path d="M120,520 L115,525" fill="none" stroke="#764BA2" stroke-width="3" stroke-dasharray="6,4" opacity=".8"/>
+
+                    <!-- ===== 城市标记点 + 名称 ===== -->
+
+                    <!-- ① 武汉 起点 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="120" cy="520" r="11" fill="#FF6B6B" stroke="#fff" stroke-width="2.5"/>
+                        <text x="120" y="525" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">1</text>
+                    </g>
+                    <text x="95" y="548" font-size="14" font-weight="bold" fill="#333">武汉</text>
+                    <text x="90" y="564" font-size="10" fill="#999">出发</text>
+
+                    <!-- ② 西安 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="240" cy="450" r="10" fill="#FF6B6B" stroke="#fff" stroke-width="2"/>
+                        <text x="240" y="454" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">2</text>
+                    </g>
+                    <text x="215" y="472" font-size="13" font-weight="bold" fill="#333">西安</text>
+                    <text x="168" y="472" font-size="10" fill="#FF6B6B">850km</text>
+
+                    <!-- ③ 武威 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="340" cy="380" r="10" fill="#FF6B6B" stroke="#fff" stroke-width="2"/>
+                        <text x="340" y="384" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">3</text>
+                    </g>
+                    <text x="315" y="368" font-size="13" font-weight="bold" fill="#333">武威</text>
+                    <text x="278" y="385" font-size="10" fill="#FF6B6B">950km</text>
+
+                    <!-- ④ 哈密 入疆 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="460" cy="320" r="11" fill="#11998E" stroke="#fff" stroke-width="2.5"/>
+                        <text x="460" y="325" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">4</text>
+                    </g>
+                    <text x="478" y="310" font-size="13" font-weight="bold" fill="#333">哈密</text>
+                    <text x="390" y="365" font-size="10" fill="#FF6B6B">980km</text>
+
+                    <!-- ⑤ 乌鲁木齐 环线起点 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="580" cy="220" r="12" fill="#11998E" stroke="#fff" stroke-width="2.5"/>
+                        <text x="580" y="225" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">5</text>
+                    </g>
+                    <text x="555" y="203" font-size="14" font-weight="bold" fill="#333">乌鲁木齐</text>
+                    <text x="510" y="270" font-size="10" fill="#11998E">580km</text>
+
+                    <!-- ⑥ 布尔津 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="700" cy="190" r="10" fill="#11998E" stroke="#fff" stroke-width="2"/>
+                        <text x="700" y="194" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">6</text>
+                    </g>
+                    <text x="718" y="178" font-size="13" font-weight="bold" fill="#333">布尔津</text>
+                    <text x="633" y="195" font-size="10" fill="#11998E">450km</text>
+
+                    <!-- ⑦ 禾木村 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="750" cy="230" r="10" fill="#11998E" stroke="#fff" stroke-width="2"/>
+                        <text x="750" y="234" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">7</text>
+                    </g>
+                    <text x="766" y="238" font-size="13" font-weight="bold" fill="#333">禾木村</text>
+                    <text x="722" y="218" font-size="10" fill="#11998E">140km</text>
+
+                    <!-- ⑧ 喀纳斯 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="720" cy="300" r="10" fill="#11998E" stroke="#fff" stroke-width="2"/>
+                        <text x="720" y="304" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">8</text>
+                    </g>
+                    <text x="738" y="315" font-size="13" font-weight="bold" fill="#333">喀纳斯</text>
+                    <text x="734" y="268" font-size="10" fill="#11998E">150km</text>
+
+                    <!-- ⑨ 魔鬼城 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="620" cy="350" r="10" fill="#11998E" stroke="#fff" stroke-width="2"/>
+                        <text x="620" y="354" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">9</text>
+                    </g>
+                    <text x="582" y="355" font-size="13" font-weight="bold" fill="#333">魔鬼城</text>
+                    <text x="665" y="330" font-size="10" fill="#11998E">420km</text>
+
+                    <!-- ⑩ 赛里木湖 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="500" cy="380" r="10" fill="#11998E" stroke="#fff" stroke-width="2"/>
+                        <text x="500" y="384" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">10</text>
+                    </g>
+                    <text x="462" y="398" font-size="13" font-weight="bold" fill="#333">赛里木湖</text>
+                    <text x="555" y="372" font-size="10" fill="#11998E">450km</text>
+
+                    <!-- ⑪ 伊宁 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="420" cy="360" r="10" fill="#11998E" stroke="#fff" stroke-width="2"/>
+                        <text x="420" y="364" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">11</text>
+                    </g>
+                    <text x="382" y="355" font-size="13" font-weight="bold" fill="#333">伊宁</text>
+                    <text x="455" y="348" font-size="10" fill="#11998E">150km</text>
+
+                    <!-- ⑫ 那拉提 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="380" cy="400" r="10" fill="#11998E" stroke="#fff" stroke-width="2"/>
+                        <text x="380" y="404" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">12</text>
+                    </g>
+                    <text x="340" y="418" font-size="13" font-weight="bold" fill="#333">那拉提</text>
+                    <text x="392" y="385" font-size="10" fill="#11998E">280km</text>
+
+                    <!-- ⑬ 独库公路 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="430" cy="440" r="10" fill="#11998E" stroke="#fff" stroke-width="2"/>
+                        <text x="430" y="444" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">13</text>
+                    </g>
+                    <text x="444" y="460" font-size="13" font-weight="bold" fill="#333">独库公路</text>
+                    <text x="368" y="435" font-size="10" fill="#11998E">160km</text>
+
+                    <!-- ⑭ 哈密 返程 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="460" cy="320" r="9" fill="#F5AF19" stroke="#fff" stroke-width="2"/>
+                        <text x="460" y="323" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">14</text>
+                    </g>
+                    <text x="472" y="338" font-size="11" fill="#666">返程</text>
+                    <text x="440" y="470" font-size="10" fill="#F5AF19">~1000km</text>
+
+                    <!-- ⑮ 张掖 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="330" cy="430" r="10" fill="#F5AF19" stroke="#fff" stroke-width="2"/>
+                        <text x="330" y="434" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">15</text>
+                    </g>
+                    <text x="292" y="445" font-size="13" font-weight="bold" fill="#333">张掖</text>
+                    <text x="260" y="470" font-size="10" fill="#F5AF19">~500km</text>
+
+                    <!-- ⑯ 兰州 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="200" cy="490" r="10" fill="#764BA2" stroke="#fff" stroke-width="2"/>
+                        <text x="200" y="494" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">16</text>
+                    </g>
+                    <text x="165" y="505" font-size="13" font-weight="bold" fill="#333">兰州</text>
+                    <text x="155" y="520" font-size="10" fill="#764BA2">托运·飞回</text>
+
+                    <!-- ⑰ 武汉✈️ 终点 -->
+                    <g filter="url(#shadow)">
+                        <circle cx="115" cy="525" r="11" fill="#764BA2" stroke="#fff" stroke-width="2.5"/>
+                        <text x="115" y="529" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">17</text>
+                    </g>
+                    <text x="72" y="530" font-size="13" font-weight="bold" fill="#333">武汉✈️</text>
+
+                    <!-- ===== 底部图例 ===== -->
+                    <rect x="40" y="560" width="820" height="28" rx="14" fill="#fff" opacity=".6"/>
+
+                    <line x1="60" y1="574" x2="85" y2="574" stroke="#FF6B6B" stroke-width="3" stroke-linecap="round"/>
+                    <text x="92" y="578" font-size="11" fill="#555">入疆赶路 D1-D4</text>
+
+                    <line x1="210" y1="574" x2="235" y2="574" stroke="#11998E" stroke-width="3" stroke-linecap="round"/>
+                    <text x="242" y="578" font-size="11" fill="#555">北疆大环线 D5-D12</text>
+
+                    <line x1="390" y1="574" x2="415" y2="574" stroke="#F5AF19" stroke-width="3" stroke-linecap="round"/>
+                    <text x="422" y="578" font-size="11" fill="#555">返程赶路 D13-D14</text>
+
+                    <line x1="550" y1="574" x2="575" y2="574" stroke="#764BA2" stroke-width="3" stroke-dasharray="6,4" stroke-linecap="round"/>
+                    <text x="582" y="578" font-size="11" fill="#555">飞回武汉 D15</text>
+
+                </svg>
+            </div>
+
         </section>
 
         <!-- 详细行程 -->

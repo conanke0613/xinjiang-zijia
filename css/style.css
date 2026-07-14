@@ -428,6 +428,21 @@ body {
     height: 560px !important;
 }
 
+/* 行程路线图 SVG */
+.route-map-wrapper {
+    margin: 28px 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: #FFF9F0;
+}
+
+.route-map-wrapper svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 /* 行程路线文案 */
 .trip-route-text {
     background: var(--bg-card);
@@ -1307,6 +1322,7 @@ body {
     .checklist-table { font-size: 0.8rem; display: block; overflow-x: auto; }
     .stats-row { gap: 24px; }
     .step { flex-direction: column; align-items: center; text-align: center; }
+    .route-map-wrapper { margin: 20px 0; }
 }
 
 @media (max-width: 600px) {
@@ -1322,6 +1338,7 @@ body {
     .image-placeholder { padding: 32px 16px; }
     .completion-banner { padding: 28px 16px; }
     .completion-banner h3 { font-size: 1.2rem; }
+    .route-map-wrapper { margin: 16px -12px; border-radius: var(--radius-md); }
 }
 
 /* ========================================
